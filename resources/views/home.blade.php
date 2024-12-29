@@ -1,20 +1,21 @@
 @extends('layouts.main_layout')
 @section('content')
-    {{-- Switch Case --}}
-    @switch($value)
-        @case(100)
-            <p>Valor {{ $value }}</p>
-        @break
+    {{-- Empty - avaliar se a variavel existe, se é 0/vazio/null --}}
+    @empty($values)
+        <p>Não Existe</p>
+    @else
+        <p>Existe</p>
+    @endempty
 
-        @case(200)
-            <p>Valor {{ $value }}</p>
-        @break
+    {{-- Isset - Está ou não está definido a variável --}}
+    @isset($value)
+        <p>Existe a variável</p>
+    @else
+        <p>Não Existe a variável</p>
+    @endisset
 
-        @case(300)
-            <p>Valor {{ $value }}</p>
-        @break
-
-        @default
-            <p>Outro</p>
-    @endswitch
+    {{-- Unless - Verificar se uma condição não é verdadeira." --}}
+    @unless ($value == 100)
+        <p>OKKKK</p>
+    @endunless
 @endsection
