@@ -1,25 +1,12 @@
 @extends('layouts.main_layout')
 @section('content')
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <form action="{{ route('main.submit') }}" method="post">
-                    @csrf
-                    <div class="mb-3">
-                        <label class="form-label">Username:</label>
-                        <input type="text" name="username" class="form-control">
-                    </div>
+    @production
+        <p>Estou em ambiente de produção</p>
+    @else
+        <p>Não estou em ambiente de produção</p>
+    @endproduction
 
-                    <div class="mb-3">
-                        <label class="form-label">Password:</label>
-                        <input type="password" name="password" class="form-control">
-                    </div>
-
-                    <div class="mb-3">
-                        <button class="btn btn-primary">Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    @env('local')
+        <p>Estou no ambiente local {{ env('DB_DATABASE') }}</p>
+    @endenv
 @endsection
