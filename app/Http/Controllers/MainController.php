@@ -19,7 +19,12 @@ class MainController extends Controller
         return view('home', $data);
     }
 
-    public function submit(): void {
-        echo 'Formulário submitido';
+    public function submit(Request $request): void {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:6'
+        ]);
+
+        echo 'Formulário submitido com sucesso.';
     }
 }
