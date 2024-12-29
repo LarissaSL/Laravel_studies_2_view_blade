@@ -1,62 +1,25 @@
 @extends('layouts.main_layout')
 @section('content')
-    {{-- For --}}
-    @for ($i = 0; $i < 5; $i++)
-        <p>{{ $i }}
-        <p>
-    @endfor
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <form action="{{ route('main.submit') }}" method="post">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label">Username:</label>
+                        <input type="text" name="username" class="form-control">
+                    </div>
 
-    {{-- Foreach - Percorrer uma coleção de dados --}}
-    @foreach ($cities as $city)
-        <p>{{ $city }}</p>
-    @endforeach
+                    <div class="mb-3">
+                        <label class="form-label">Password:</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
 
-    {{-- Forelse --}}
-    @forelse ($names as $name)
-        <p>{{ $name }}</p>
-    @empty
-        <p>Names está vazio</p>
-    @endforelse
-
-    @while ($index < 6)
-        <p>Indice: {{ $index }}</p>
-        @php
-            $index++;
-        @endphp
-    @endwhile
-
-    {{-- Continue e Break--}}
-    {{-- For --}}
-    <h1>Continue e Break</h1>
-    @for ($i = 0; $i < 10; $i++)
-        {{-- Continue --}}
-        @if ($i == 2)
-            @continue
-        @endif
-        
-        <h1>{{ $i }}<h1>
-
-
-        {{-- Break --}}
-        @if ($i == 7)
-            @break
-        @endif
-    @endfor
-
-    {{-- Loop Variable --}}
-    @foreach ($cities as $city)
-        <p>City: {{ $city }}</p>
-        <p>Index: {{ $loop->index }}</p>
-        <p>Iteration: {{ $loop->iteration }}</p>
-        <p>Remaining: {{ $loop->remaining }}</p>
-        <p>Count: {{ $loop->count }}</p>
-        
-        @if($loop->first)
-            <p>Esta é a primeira iteração.</p>
-        @endif
-        
-        @if($loop->last)
-            <p>Esta é a última iteração.</p>
-        @endif
-    @endforeach
+                    <div class="mb-3">
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
