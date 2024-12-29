@@ -5,3 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'showView']);
 Route::post('/submit', [MainController::class, 'submit'])->name('main.submit');
+
+Route::get('/setSession', [MainController::class, 'setSession']);
+Route::get('/clearSession', [MainController::class, 'clearSession']);
